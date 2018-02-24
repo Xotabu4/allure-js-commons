@@ -6,11 +6,11 @@ var fs = require('fs-extra'),
 
 module.exports = {
     writeSuite: function(targetDir, suites) {
-        fs.outputFileSync(path.join(targetDir, uuid.v4() + '-testsuite.xml'), xml.parse('ns2:test-suite', suites.toXML()));
+        global.XML_RESULTS = xml.parse('ns2:test-suite', suites.toXML());
     },
     writeBuffer: function(targetDir, buffer, ext) {
         var fileName = uuid.v4() + '-attachment.' + ext;
-        fs.outputFileSync(path.join(targetDir, fileName), buffer);
+        // fs.outputFileSync(path.join(targetDir, fileName), buffer);
         return fileName;
     }
 };
